@@ -1,4 +1,4 @@
-<View xmlns="sap.m" displayBlock="true" xmlns:f="sap.f" controllerName="sap.kadaster.FlexibleColumnLayoutWithOneColumnStart.controller.AboutPage" height="100%">
+<View xmlns="sap.m" displayBlock="true" xmlns:f="sap.f" controllerName="sap.kadaster.FlexibleColumnLayoutWithOneColumnStart.controller.Page4" height="100%">
 	<f:DynamicPage>
 		<!-- DynamicPage Title -->
 		<f:title>

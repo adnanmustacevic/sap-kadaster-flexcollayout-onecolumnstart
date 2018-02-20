@@ -4,33 +4,33 @@ sap.ui.define([
 ], function (JSONModel, Controller) {
 	"use strict";
 
-	return Controller.extend("sap.kadaster.FlexibleColumnLayoutWithOneColumnStart.controller.Detail", {
+	return Controller.extend("sap.kadaster.FlexibleColumnLayoutWithOneColumnStart.controller.MidCol", {
 		onInit: function () {
 			this.oRouter = this.getOwnerComponent().getRouter();
 			this.oModel = this.getOwnerComponent().getModel();
 
-			this.oRouter.getRoute("master").attachPatternMatched(this._onProductMatched, this);
-			this.oRouter.getRoute("detail").attachPatternMatched(this._onProductMatched, this);
-			this.oRouter.getRoute("detailDetail").attachPatternMatched(this._onProductMatched, this);
+			this.oRouter.getRoute("beginCol").attachPatternMatched(this._onProductMatched, this);
+			this.oRouter.getRoute("midCol").attachPatternMatched(this._onProductMatched, this);
+			this.oRouter.getRoute("endCol").attachPatternMatched(this._onProductMatched, this);
 		},
 		handleItemPress: function (oEvent) {
 			var oNextUIState = this.getOwnerComponent().getHelper().getNextUIState(2),
 				supplierPath = oEvent.getSource().getBindingContext("products").getPath(),
 				supplier = supplierPath.split("/").slice(-1).pop();
 
-			this.oRouter.navTo("detailDetail", {layout: oNextUIState.layout, supplier: supplier});
+			this.oRouter.navTo("endCol", {layout: oNextUIState.layout, supplier: supplier});
 		},
 		handleFullScreen: function () {
 			var sNextLayout = this.oModel.getProperty("/actionButtonsInfo/midColumn/fullScreen");
-			this.oRouter.navTo("detail", {layout: sNextLayout, product: this._product});
+			this.oRouter.navTo("midCol", {layout: sNextLayout, product: this._product});
 		},
 		handleExitFullScreen: function () {
 			var sNextLayout = this.oModel.getProperty("/actionButtonsInfo/midColumn/exitFullScreen");
-			this.oRouter.navTo("detail", {layout: sNextLayout, product: this._product});
+			this.oRouter.navTo("midCol", {layout: sNextLayout, product: this._product});
 		},
 		handleClose: function () {
 			var sNextLayout = this.oModel.getProperty("/actionButtonsInfo/midColumn/closeColumn");
-			this.oRouter.navTo("master", {layout: sNextLayout});
+			this.oRouter.navTo("beginCol", {layout: sNextLayout});
 		},
 		_onProductMatched: function (oEvent) {
 			this._product = oEvent.getParameter("arguments").product || this._product || "0";

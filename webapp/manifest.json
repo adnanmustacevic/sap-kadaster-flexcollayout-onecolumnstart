@@ -45,8 +45,8 @@
 	},
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "sap.kadaster.FlexibleColumnLayoutWithOneColumnStart.view.FlexibleColumnLayout",
-			"id": "fcl",
+			"viewName": "sap.kadaster.FlexibleColumnLayoutWithOneColumnStart.view.App",
+			"id": "app",
 			"type": "XML",
 			"async": true,
 			"height": "100%"
@@ -79,7 +79,7 @@
 				"routerClass": "sap.f.routing.Router",
 				"viewType": "XML",
 				"viewPath": "sap.kadaster.FlexibleColumnLayoutWithOneColumnStart.view",
-				"controlId": "fcl",
+				"controlId": "app",
 				"transition": "slide",
 				"async": true
 			},
@@ -92,45 +92,45 @@
 				},
 				{
 					"pattern": ":layout:",
-					"name": "master",
+					"name": "beginCol",
 					"target": [
-						"master",
-						"detail"
+						"beginCol",
+						"midCol"
 					]
 				},
 				{
-					"pattern": "detail/{product}/{layout}",
-					"name": "detail",
+					"pattern": "midCol/{product}/{layout}",
+					"name": "midCol",
 					"target": [
-						"master",
-						"detail"
+						"beginCol",
+						"midCol"
 					]
 				},
 				{
-					"pattern": "detailDetail/{supplier}/{layout}",
-					"name": "detailDetail",
+					"pattern": "endCol/{supplier}/{layout}",
+					"name": "endCol",
 					"target": [
-						"master",
-						"detail",
-						"detailDetail"
+						"beginCol",
+						"midCol",
+						"endCol"
 					]
 				}
 			],
 			"targets": {
-				"master": {
-					"viewName": "Master",
+				"beginCol": {
+					"viewName": "BeginCol",
 					"controlAggregation": "beginColumnPages"
 				},
-				"detail": {
-					"viewName": "Detail",
+				"midCol": {
+					"viewName": "MidCol",
 					"controlAggregation": "midColumnPages"
 				},
-				"detailDetail": {
-					"viewName": "DetailDetail",
+				"endCol": {
+					"viewName": "EndCol",
 					"controlAggregation": "endColumnPages"
 				},
 				"page2": {
-					"viewName": "AboutPage",
+					"viewName": "Page4",
 					"controlAggregation": "endColumnPages"
 				}
 			}

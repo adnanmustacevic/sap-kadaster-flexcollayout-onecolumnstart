@@ -1,4 +1,4 @@
-<m:View displayBlock="true" controllerName="sap.kadaster.FlexibleColumnLayoutWithOneColumnStart.controller.DetailDetail" height="100%"
+<m:View displayBlock="true" controllerName="sap.kadaster.FlexibleColumnLayoutWithOneColumnStart.controller.EndCol" height="100%"
 		xmlns="sap.f"
 		xmlns:m="sap.m">
 

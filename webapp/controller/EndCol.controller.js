@@ -4,12 +4,12 @@ sap.ui.define([
 ], function (JSONModel, Controller) {
 	"use strict";
 
-	return Controller.extend("sap.kadaster.FlexibleColumnLayoutWithOneColumnStart.controller.DetailDetail", {
+	return Controller.extend("sap.kadaster.FlexibleColumnLayoutWithOneColumnStart.controller.EndCol", {
 		onInit: function () {
 			this.oRouter = this.getOwnerComponent().getRouter();
 			this.oModel = this.getOwnerComponent().getModel();
 
-			this.oRouter.getRoute("detailDetail").attachPatternMatched(this._onSupplierMatched, this);
+			this.oRouter.getRoute("endCol").attachPatternMatched(this._onSupplierMatched, this);
 		},
 		handleAboutPress: function () {
 			var oNextUIState = this.getOwnerComponent().getHelper().getNextUIState(3);
@@ -17,15 +17,15 @@ sap.ui.define([
 		},
 		handleFullScreen: function () {
 			var sNextLayout = this.oModel.getProperty("/actionButtonsInfo/endColumn/fullScreen");
-			this.oRouter.navTo("detailDetail", {layout: sNextLayout, supplier: this._supplier});
+			this.oRouter.navTo("endCol", {layout: sNextLayout, supplier: this._supplier});
 		},
 		handleExitFullScreen: function () {
 			var sNextLayout = this.oModel.getProperty("/actionButtonsInfo/endColumn/exitFullScreen");
-			this.oRouter.navTo("detailDetail", {layout: sNextLayout, supplier: this._supplier});
+			this.oRouter.navTo("endCol", {layout: sNextLayout, supplier: this._supplier});
 		},
 		handleClose: function () {
 			var sNextLayout = this.oModel.getProperty("/actionButtonsInfo/endColumn/closeColumn");
-			this.oRouter.navTo("master", {layout: sNextLayout});
+			this.oRouter.navTo("beginCol", {layout: sNextLayout});
 		},
 		_onSupplierMatched: function (oEvent) {
 			this._supplier = oEvent.getParameter("arguments").supplier || this._supplier || "0";

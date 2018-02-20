@@ -8,7 +8,7 @@ sap.ui.define([
 ], function (JSONModel, Controller, Filter, FilterOperator, Sorter, MessageBox) {
 	"use strict";
 
-	return Controller.extend("sap.kadaster.FlexibleColumnLayoutWithOneColumnStart.controller.Master", {
+	return Controller.extend("sap.kadaster.FlexibleColumnLayoutWithOneColumnStart.controller.BeginCol", {
 		onInit: function () {
 			this.oRouter = this.getOwnerComponent().getRouter();
 			this._bDescendingSort = false;
@@ -18,9 +18,15 @@ sap.ui.define([
 				productPath = oEvent.getSource().getBindingContext("products").getPath(),
 				product = productPath.split("/").slice(-1).pop();
 
-			this.oRouter.navTo("detail", {layout: oNextUIState.layout, product: product});
+			this.oRouter.navTo("midCol", {layout: oNextUIState.layout, product: product});
 		},
 		onSearch: function (oEvent) {
+			
+			// set products demo model on this sample
+			var oProductsModel = new JSONModel(jQuery.sap.getModulePath("sap.kadaster.FlexibleColumnLayoutWithOneColumnStart", "/model/products.json"));
+			oProductsModel.setSizeLimit(1000);
+			this.getOwnerComponent().setModel(oProductsModel, "products");
+			
 			var oTableSearchState = [],
 				sQuery = oEvent.getParameter("query");
 

@@ -8,28 +8,7 @@ sap.ui.define([
 
 	var Component =  UIComponent.extend("sap.kadaster.FlexibleColumnLayoutWithOneColumnStart.Component", {
 		metadata: {
-			manifest: "json",
-			config: {
-				sample: {
-					iframe: "webapp/index.html",
-					stretch: true,
-					files: [
-						"view/Detail.view.xml",
-						"view/DetailDetail.view.xml",
-						"view/FlexibleColumnLayout.view.xml",
-						"view/Master.view.xml",
-						"view/AboutPage.view.xml",
-						"controller/Detail.controller.js",
-						"controller/DetailDetail.controller.js",
-						"controller/FlexibleColumnLayout.controller.js",
-						"controller/Master.controller.js",
-						"controller/AboutPage.controller.js",
-						"Component.js",
-						"index.html",
-						"manifest.json"
-					]
-				}
-			}
+			manifest: "json"
 		},
 
 		init: function() {
@@ -38,17 +17,17 @@ sap.ui.define([
 			var oModel = new JSONModel();
 			this.setModel(oModel);
 
-			// set products demo model on this sample
+/*			// set products demo model on this sample
 			var oProductsModel = new JSONModel(jQuery.sap.getModulePath("sap.kadaster.FlexibleColumnLayoutWithOneColumnStart", "/model/products.json"));
 			oProductsModel.setSizeLimit(1000);
-			this.setModel(oProductsModel, "products");
+			this.setModel(oProductsModel, "products");*/
 
 			this.getRouter().initialize();
 		},
 		
 		createContent: function () {
 			return sap.ui.view({
-				viewName: "sap.kadaster.FlexibleColumnLayoutWithOneColumnStart.view.FlexibleColumnLayout",
+				viewName: "sap.kadaster.FlexibleColumnLayoutWithOneColumnStart.view.App",
 				type: "XML"
 			});
 		},
@@ -58,7 +37,7 @@ sap.ui.define([
 		 * @returns {sap.f.FlexibleColumnLayoutSemanticHelper} An instance of the semantic helper
 		 */
 		getHelper: function () {
-			var oFCL = this.getRootControl().byId("fcl"),
+			var oAPP = this.getRootControl().byId("app"),
 				oParams = jQuery.sap.getUriParameters(),
 				oSettings = {
 					defaultTwoColumnLayoutType: sap.f.LayoutType.TwoColumnsMidExpanded,
@@ -68,7 +47,7 @@ sap.ui.define([
 					maxColumnsCount: oParams.get("max")
 				};
 
-			return FlexibleColumnLayoutSemanticHelper.getInstanceFor(oFCL, oSettings);
+			return FlexibleColumnLayoutSemanticHelper.getInstanceFor(oAPP, oSettings);
 		}
 	});
 	return Component;

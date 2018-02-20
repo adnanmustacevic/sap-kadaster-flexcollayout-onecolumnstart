@@ -4,7 +4,7 @@ sap.ui.define([
 ], function (JSONModel, Controller) {
 	"use strict";
 
-	return Controller.extend("sap.kadaster.FlexibleColumnLayoutWithOneColumnStart.controller.AboutPage", {
+	return Controller.extend("sap.kadaster.FlexibleColumnLayoutWithOneColumnStart.controller.Page4", {
 		onInit: function () {
 			this.oRouter = this.getOwnerComponent().getRouter();
 			this.oModel = this.getOwnerComponent().getModel();
